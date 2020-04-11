@@ -1,6 +1,10 @@
 .full-item-card{
     width: 50%;
-    background-color: #5cbfec;
     border-radius: 30px;
-    height: 100%px;
+    height: 100%;
+}
+.full-item-card p{
+    background-color: #ece7e7;
+    margin: 10px;
+    border-radius: 8px;
 }

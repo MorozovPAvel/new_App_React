@@ -15,12 +15,12 @@ export default class App extends Component{
         super(props);
         this.state = {
             data : [
-                {label: "Михин Михаил Михайлович", kind: "man", profession: "turner", id: 1},
-                {label: "Иванов Иван Иванович", kind: "man", profession: "driver", id: 2},
-                {label: "Никонова Наталья Николаевна", kind: "woman", profession: "doctor", id: 3},
-                {label: "Михин Михаил Михайлович", kind: "man", profession: "turner", id: 4},
-                {label: "Иванов Иван Иванович", kind: "man", profession: "driver", id: 5},
-                {label: "Никонова Наталья Николаевна", kind: "woman", profession: "doctor", id: 6},
+                {label: "Михин Михаил Михайлович", kind: "man", profession: "turner", phone: "+7900*******", id: 1},
+                {label: "Иванов Иван Иванович", kind: "man", profession: "driver", phone: "+7900*******", id: 2},
+                {label: "Никонова Наталья Николаевна", kind: "woman", profession: "doctor", phone: "+7900*******", id: 3},
+                {label: "Михин Михаил Михайлович", kind: "man", profession: "turner", phone: "+7900*******", id: 4},
+                {label: "Иванов Иван Иванович", kind: "man", profession: "driver", phone: "+7900*******", id: 5},
+                {label: "Никонова Наталья Николаевна", kind: "woman", profession: "doctor", phone: "", id: 6},
             ],
             term: '',
             toggleCard: 0
@@ -35,8 +35,8 @@ export default class App extends Component{
         this.setState({
             toggleCard: id
         });
-        
      }
+
 
      searchPost(items, term){
         if(term.length === 0){

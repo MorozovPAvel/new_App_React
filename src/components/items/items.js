@@ -7,9 +7,11 @@ export default class Items extends Component{
     
     render(){
         const {label, onToggleFullCard, deleteItem} = this.props;
+
+
         return(
             <div className='items'>
-               <span onClick ={onToggleFullCard}>
+               <span onClick = {onToggleFullCard}>
                    {label}
                 </span>
                 <button onClick ={deleteItem}>Удалить</button>
