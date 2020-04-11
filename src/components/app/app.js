@@ -28,6 +28,7 @@ export default class App extends Component{
 
         this.onToggleFullCard = this.onToggleFullCard.bind(this); 
         this.onUpdateSerach = this.onUpdateSerach.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
   
     onToggleFullCard(id){
@@ -36,6 +37,7 @@ export default class App extends Component{
         });
         
      }
+
      searchPost(items, term){
         if(term.length === 0){
             return items
@@ -48,6 +50,16 @@ export default class App extends Component{
          this.setState({term});
      }
 
+     deleteItem(id){
+         this.setState(({data}) =>{
+            const index = data.findIndex(elem => elem.id === id);
+            const newArr = [...data.slice(0, index), ...data.slice(index + 1)];
+
+            return{
+                data: newArr
+            }
+         });
+     }
 
     render(){
         const {data, term, toggleCard} = this.state;
@@ -61,7 +73,8 @@ export default class App extends Component{
                <div className="bodyApp">
                    <ListItems 
                    posts={visiblePost}
-                   onToggleFullCard = {this.onToggleFullCard}/>
+                   onToggleFullCard={this.onToggleFullCard}
+                   deleteItem={this.deleteItem}/>
                    <FullItemCard 
                    posts={data}
                    toggleCard={toggleCard}/>

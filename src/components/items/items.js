@@ -6,13 +6,13 @@ import './items.css'
 export default class Items extends Component{
     
     render(){
-        const {label, onToggleFullCard} = this.props;
+        const {label, onToggleFullCard, deleteItem} = this.props;
         return(
             <div className='items'>
                <span onClick ={onToggleFullCard}>
                    {label}
                 </span>
-                <button>Удалить</button>
+                <button onClick ={deleteItem}>Удалить</button>
             </div>
             
         )
