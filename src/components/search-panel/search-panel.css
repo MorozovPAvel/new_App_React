@@ -1,0 +1,12 @@
+.search-panel{
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 800px;
+    text-align: center;
+}
+.search-panel input{
+    width: 100%;
+}
+.search-panel button{
+    width: 25%;
+}

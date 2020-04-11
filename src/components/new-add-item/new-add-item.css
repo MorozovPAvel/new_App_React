@@ -1,0 +1,12 @@
+.new-add-item{
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 10px;
+}
+.new-add-item input{
+    width: 70%;
+}
+.new-add-item button{
+    width: 25%;
+}

@@ -1,0 +1,12 @@
+.header{
+    background-color: rgba(206, 219, 19, 0.945);
+    display: flex;
+    
+    border-radius: 30px;
+    justify-content: space-around;
+    
+}
+.header img{
+    width: 120px;
+    height: 60px;
+}
