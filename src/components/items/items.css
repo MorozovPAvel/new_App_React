@@ -9,15 +9,21 @@
 .items button{
     margin-left: 10px;
     border-radius: 20px;
+    font-size: 75%;
+    background-color: #ee0c0cd7;
+    opacity: .4;
 }
 .items button:hover{
-    background-color: #ee0c0c;
+    background-color: #ee0c0cd7;
+    box-shadow: 1px 2px 7px black;
     transition-delay: 0.2s;
     transition-duration: 1s;
+    opacity: 1;
+    
 }
 .items:hover{
-    transition-delay: 0.2s;
-    transition-duration: 1s;
+    transition-delay: 0.1s;
+    transition-duration: .1s;
     background-color: #7cd1b5;
 }
 .activ{

@@ -15,20 +15,22 @@ export default class App extends Component{
         super(props);
         this.state = {
             data : [
-                {label: "Михин Михаил Михайлович", kind: "man", profession: "turner", phone: "+7900*******", id: 1},
-                {label: "Иванов Иван Иванович", kind: "man", profession: "driver", phone: "+7900*******", id: 2},
-                {label: "Никонова Наталья Николаевна", kind: "woman", profession: "doctor", phone: "+7900*******", id: 3},
-                {label: "Михин Михаил Михайлович", kind: "man", profession: "turner", phone: "+7900*******", id: 4},
-                {label: "Иванов Иван Иванович", kind: "man", profession: "driver", phone: "+7900*******", id: 5},
-                {label: "Никонова Наталья Николаевна", kind: "woman", profession: "doctor", phone: "", id: 6},
+                {label: "Михин Михаил Михайлович", kind: "man", profession: "turner", phone: "+7900*******", comments: "text", id: 1},
+                {label: "Иванов Иван Иванович", kind: "man", profession: "driver", phone: "+7900*******", comments: "", id: 2},
+                {label: "Никонова Наталья Николаевна", kind: "woman", profession: "doctor", phone: "+7900*******", comments: "", id: 3},
+                {label: "Михин Михаил Михайлович", kind: "man", profession: "turner", phone: "+7900*******", comments: "", id: 4},
+                {label: "Иванов Иван Иванович", kind: "man", profession: "driver", phone: "+7900*******", comments: "", id: 5},
+                {label: "Никонова Наталья Николаевна", kind: "woman", profession: "doctor", phone: "", comments: "", id: 6},
             ],
             term: '',
-            toggleCard: 0
+            toggleCard: 0,
+            hidden: true
         };
 
         this.onToggleFullCard = this.onToggleFullCard.bind(this); 
         this.onUpdateSerach = this.onUpdateSerach.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
+        this.onHidden = this.onHidden.bind(this);
     }
   
     onToggleFullCard(id){
@@ -37,8 +39,7 @@ export default class App extends Component{
         });
      }
 
-
-     searchPost(items, term){
+    searchPost(items, term){
         if(term.length === 0){
             return items
         }
@@ -46,11 +47,12 @@ export default class App extends Component{
             return item.label.indexOf(term) > -1
         });
     }
-     onUpdateSerach(term) {
-         this.setState({term});
-     }
 
-     deleteItem(id){
+    onUpdateSerach(term) {
+         this.setState({term});
+    }
+
+    deleteItem(id){
          this.setState(({data}) =>{
             const index = data.findIndex(elem => elem.id === id);
             const newArr = [...data.slice(0, index), ...data.slice(index + 1)];
@@ -59,10 +61,14 @@ export default class App extends Component{
                 data: newArr
             }
          });
-     }
+    }
+
+    onHidden(){
+        (this.state.hidden) ? (this.setState({hidden: false})) : (this.setState({hidden: true}));
+    }
 
     render(){
-        const {data, term, toggleCard} = this.state;
+        const {data, term, toggleCard, hidden} = this.state;
 
         const visiblePost = this.searchPost(data, term);
         return(
@@ -79,7 +85,9 @@ export default class App extends Component{
                    posts={data}
                    toggleCard={toggleCard}/>
                 </div>
-                <NewAddItems/>
+                <NewAddItems
+                    onHidden={this.onHidden}
+                    hidden={hidden}/>
             </>
             
         )

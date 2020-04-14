@@ -10,7 +10,7 @@ const FullItemCard = ({posts, toggleCard}) => {
 const filterposts = posts.filter(e => e.id === toggleCard);
 
 const element = filterposts.map((item) => {
-    const {id, label, kind, profession, phone} = item;
+    const {id, label, kind, profession, phone, comments} = item;
       
     return (
         <li key ={id} className="list-items">
@@ -18,6 +18,7 @@ const element = filterposts.map((item) => {
             <p>Пол: {kind}</p>
             <p>Профессия: {profession}</p>
             <p>Телефон: {phone}</p>
+            <p>Комментарий: {comments}</p>
         </li>
     )
     

@@ -14,7 +14,7 @@ export default class Items extends Component{
                <span onClick = {onToggleFullCard}>
                    {label}
                 </span>
-                <button onClick ={deleteItem}>Удалить</button>
+        <button onClick ={deleteItem}>&#x2716;</button>
             </div>
             
         )
