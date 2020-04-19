@@ -17,10 +17,7 @@ export default class App extends Component{
             data : [
                 {label: "Михин Михаил Михайлович", kind: "man", profession: "turner", phone: "+7900*******", comments: "text", id: 1},
                 {label: "Иванов Иван Иванович", kind: "man", profession: "driver", phone: "+7900*******", comments: "", id: 2},
-                {label: "Никонова Наталья Николаевна", kind: "woman", profession: "doctor", phone: "+7900*******", comments: "", id: 3},
-                {label: "Михин Михаил Михайлович", kind: "man", profession: "turner", phone: "+7900*******", comments: "", id: 4},
-                {label: "Иванов Иван Иванович", kind: "man", profession: "driver", phone: "+7900*******", comments: "", id: 5},
-                {label: "Никонова Наталья Николаевна", kind: "woman", profession: "doctor", phone: "", comments: "", id: 6},
+                {label: "Никонова Наталья Николаевна", kind: "woman", profession: "doctor", phone: "+7900*******", comments: "", id: 3}
             ],
             term: '',
             toggleCard: 0,
@@ -31,6 +28,9 @@ export default class App extends Component{
         this.onUpdateSerach = this.onUpdateSerach.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.onHidden = this.onHidden.bind(this);
+        this.addItem = this.addItem.bind(this);
+        
+        this.maxId = 4;
     }
   
     onToggleFullCard(id){
@@ -66,6 +66,22 @@ export default class App extends Component{
     onHidden(){
         (this.state.hidden) ? (this.setState({hidden: false})) : (this.setState({hidden: true}));
     }
+    addItem(label, kind, profession, phone, comments){
+        const newItem = {
+            label: label,
+            kind: kind,
+            profession: profession,
+            phone: phone,
+            comments: comments,
+            id: this.maxId++
+        }
+        this.setState(({data}) => {
+            const newArr = [...data, newItem];
+            return {
+                data: newArr
+            }
+        })
+    }
 
     render(){
         const {data, term, toggleCard, hidden} = this.state;
@@ -86,6 +102,7 @@ export default class App extends Component{
                    toggleCard={toggleCard}/>
                 </div>
                 <NewAddItems
+                    addItem={this.addItem}
                     onHidden={this.onHidden}
                     hidden={hidden}/>
             </>
